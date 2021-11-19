@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateAlimentoRecetasTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('alimento_recetas', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('alimentoA_id')->references('id')->on('alimentos')
+            ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('alimentoB_id')->references('id')->on('alimentos')
+            ->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('cantidad');
+            $table->foreignId('unidad_medida_id')->references('id')->on('unidad_medidas')
+            ->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('alimento_recetas');
+    }
+}
