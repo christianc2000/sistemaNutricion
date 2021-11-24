@@ -302,16 +302,18 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'FUNCIONALIDADES'],
         [
-            'text'       => 'important',
+            'text'       => 'Actividad',
             'icon_color' => 'red',
-            'url'        => '#',
+            'url'        => 'nutricionista/actividad',
+            'icon'       => 'fab fa-buffer'
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text'       => 'Alimento',
+            'icon_color' => 'red',
+            'url'        => 'nutricionista/alimento',
+            'icon'       => 'fas fa-carrot'
         ],
         [
             'text'       => 'information',
@@ -472,5 +474,5 @@ return [
     |
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];

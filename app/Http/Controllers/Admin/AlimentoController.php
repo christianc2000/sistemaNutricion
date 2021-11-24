@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Actividad;
+use App\Models\Alimento;
 
-class ActividadController extends Controller
+class AlimentoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,9 @@ class ActividadController extends Controller
      */
     public function index()
     {
-        $actividad=Actividad::all();
-        $fisica=$actividad->where('tipo','=','F');
-        $comentario=$actividad->where('tipo','=','C');
-        return view('admin.actividad.index',compact('fisica','comentario'));
+        $Alimento=Alimento::all();
+
+        return view('admin.alimento.index');
     }
 
     /**
@@ -48,7 +47,7 @@ class ActividadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Actividad $actividad)
+    public function show(Alimento $alimento)
     {
         //
     }
@@ -59,9 +58,9 @@ class ActividadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Actividad $fis)
+    public function edit(Alimento $alimento)
     {
-        return view('admin.actividad.edit', 'fis');
+        //
     }
 
     /**
@@ -71,7 +70,7 @@ class ActividadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Actividad $actividad)
+    public function update(Request $request, Alimento $alimento)
     {
         //
     }
@@ -82,7 +81,7 @@ class ActividadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Actividad $actividad)
+    public function destroy(Alimento $alimento)
     {
         //
     }
