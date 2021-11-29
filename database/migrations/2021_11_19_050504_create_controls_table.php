@@ -16,10 +16,10 @@ class CreateControlsTable extends Migration
         Schema::create('controls', function (Blueprint $table) {
             $table->id();
             $table->timestamp('fecha');
-            $table->foreignId('tratamiento_id')->references('id')->on('tratamientos')
-            ->onUpdate('cascade')->onDelete('cascade');
             $table->boolean('tipo_control');
-            
+            $table->foreignId('tratamiento_id')->references('id')->on('tratamientos')
+                ->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

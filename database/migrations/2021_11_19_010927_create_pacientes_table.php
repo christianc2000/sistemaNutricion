@@ -14,13 +14,12 @@ class CreatePacientesTable extends Migration
     public function up()
     {
         Schema::create('pacientes', function (Blueprint $table) {
+            $table->id();
 
-            $table->foreignId('id')->references('id')->on('personas')
-            ->onUpdate('cascade')->onDelete('cascade');
-            $table->primary('id');
-            $table->timestamp('fechaRegistro');
-            $table->foreignId('nutricionista_id')->references('id')->on('nutricionistas')
-            ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id')->references('id')->on('personas');
+            $table->unsignedBigInteger('nutricionista_id');
+            $table->foreign('nutricionista_id')->references('id')->on('nutricionistas');
+
             $table->timestamps();
         });
     }

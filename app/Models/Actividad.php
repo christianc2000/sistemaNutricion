@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Actividad extends Model
 {
     use HasFactory;
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function controls()
+    {
+        return $this->belongsToMany(Control::class);
+    }
 }

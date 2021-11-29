@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ActividadRequest;
 use Illuminate\Http\Request;
-use App\Models\Actividad;
+use App\Models\Alimento;
 
-class ActividadController extends Controller
+class AlimentoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +15,9 @@ class ActividadController extends Controller
      */
     public function index()
     {
-        $actividad=Actividad::all();
-        $fisica=$actividad->where('tipo','=','F');
-        $comentario=$actividad->where('tipo','=','C');
-        return view('admin.actividad.index',compact('fisica','comentario'));
+        $Alimento=Alimento::all();
+
+        return view('admin.alimento.index');
     }
 
     /**
@@ -29,7 +27,7 @@ class ActividadController extends Controller
      */
     public function create()
     {
-        return view('admin.actividad.create');
+        //
     }
 
     /**
@@ -38,9 +36,9 @@ class ActividadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ActividadRequest $request)
+    public function store(Request $request)
     {
-           return "validación con exito";
+        //
     }
 
     /**
@@ -49,20 +47,20 @@ class ActividadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Actividad $actividad)
+    public function show(Alimento $alimento)
     {
-        return view('admin.actividad.show',compact('actividad'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response]
+     * @return \Illuminate\Http\Response
      */
-    public function edit(Actividad $actividad)
+    public function edit(Alimento $alimento)
     {
-        return view('admin.actividad.edit', compact('actividad'));
+        //
     }
 
     /**
@@ -72,10 +70,9 @@ class ActividadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Actividad $actividad)
+    public function update(Request $request, Alimento $alimento)
     {
-
-        return view('admin.actividad.index', 'actividad');
+        //
     }
 
     /**
@@ -84,7 +81,7 @@ class ActividadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Actividad $actividad)
+    public function destroy(Alimento $alimento)
     {
         //
     }

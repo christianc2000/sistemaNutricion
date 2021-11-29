@@ -18,10 +18,10 @@ class CreateTratamientosTable extends Migration
             $table->text('objetivo');
             $table->date('fechaInicio');
             $table->date('fechaFin');
-            $table->foreignId('paciente_id')->references('id')->on('pacientes')
-            ->onUpdate('cascade')->onDelete('cascade');
             $table->decimal('costo');
             $table->boolean('completo');
+            $table->foreignId('paciente_id')->references('id')->on('pacientes')
+            ->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
