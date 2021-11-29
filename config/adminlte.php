@@ -265,43 +265,29 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'multilevel',
+            'text'    => 'CU 26-33-36',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'icon' => 'fas fa-user-injured',
+                    'text' => ' Paciente',
+                    'url'  => 'paciente',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
+                    'icon' => 'fas fa-book',
+                    'text' => ' Consulta',
+                    'url'  => 'consulta',
                 ],
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'icon' =>' fas fa-balance-scale-right',
+                    'text' => ' Unidad de medida',
+                    'url'  => 'unidadMedida',
                 ],
+
             ],
+            
         ],
+        
         ['header' => 'labels'],
         [
             'text'       => 'important',
