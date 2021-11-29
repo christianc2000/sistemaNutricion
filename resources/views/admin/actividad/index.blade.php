@@ -36,7 +36,7 @@
                         <td>
                             <!--platos/{plato}/edit-->
                             <!---->
-                            <form action="" method="POST">
+                            <form action="{{route('admin.actividad.destroy',$fis)}}" method="POST">
                                 <a href="{{ route('admin.actividad.edit', $fis) }}" class="btn btn-primary">Editar</a>
                                 @csrf
                                 <!--metodo para añadir token a un formulario-->

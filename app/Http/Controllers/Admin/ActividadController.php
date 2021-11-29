@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ActividadRequest;
-use Illuminate\Http\Request;
 use App\Models\Actividad;
+use Illuminate\Http\Request;
 
 class ActividadController extends Controller
 {
@@ -16,10 +16,10 @@ class ActividadController extends Controller
      */
     public function index()
     {
-        $actividad=Actividad::all();
-        $fisica=$actividad->where('tipo','=','F');
-        $comentario=$actividad->where('tipo','=','C');
-        return view('admin.actividad.index',compact('fisica','comentario'));
+        $actividad = Actividad::all();
+        $fisica = $actividad->where('tipo', '=', 'F');
+        $comentario = $actividad->where('tipo', '=', 'C');
+        return view('admin.actividad.index', compact('fisica', 'comentario'));
     }
 
     /**
@@ -40,7 +40,13 @@ class ActividadController extends Controller
      */
     public function store(ActividadRequest $request)
     {
-           return "validación con exito";
+        Actividad::create([
+            'nombre' => $request->nombre,
+            'MET' => $request->MET,
+            'ctte' => 0.0175,
+            'tipo' => 'F',
+        ]);
+        return redirect()->route('admin.actividad.index');
     }
 
     /**
@@ -51,7 +57,7 @@ class ActividadController extends Controller
      */
     public function show(Actividad $actividad)
     {
-        return view('admin.actividad.show',compact('actividad'));
+        return view('admin.actividad.show', compact('actividad'));
     }
 
     /**
@@ -72,10 +78,12 @@ class ActividadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Actividad $actividad)
+    public function update(ActividadRequest $request, Actividad $actividad)
     {
 
-        return view('admin.actividad.index', 'actividad');
+        $actividad->update($request->all());
+
+        return redirect()->route('admin.actividad.index');
     }
 
     /**
@@ -86,6 +94,7 @@ class ActividadController extends Controller
      */
     public function destroy(Actividad $actividad)
     {
-        //
+        Actividad::destroy($actividad->id);
+        return redirect()->route('admin.actividad.index');
     }
 }

@@ -7,8 +7,43 @@
 @stop
 
 @section('content')
-    <p> Bienvenido
-    </p>
+    <div class="card">
+        <div class="card-body">
+            <form action="{{ route('admin.actividad.update', $actividad) }}" method="POST">
+
+                @csrf
+                @method('put')
+                <div class="form-group">
+                    <label for="">Nombre: </label>
+                    <input type="text" name="nombre" id="nombre" class="form-control"
+                        placeholder="Ingrese el nombre de la actividad" aria-describedby="helpId"
+                        value="{{ old('nombre',$actividad->nombre) }}">
+                    @error('nombre')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="">MET:</label>
+                    <input type="number" size=30 style="width:200px" name="MET" id="MET" min="1" class="form-control"
+                        placeholder="Nro MEC" aria-describedby="helpId" value="{{ old('MET',$actividad->MET) }}">
+                    @error('MET')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                </div>
+                {{-- <div class="form-group">
+                <label for="">Tipo</label>
+                <br>
+                <input type="radio" name="Radio" id="Radio1" value="F"> Fisica<br>
+                <input type="radio" name="Radio" id="Radio2" value="R"> Recomendación<br>
+            </div> --}}
+                <div class="form-group">
+                    <a href="{{ route('admin.actividad.index') }}" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
 @stop
 
 @section('css')
@@ -16,5 +51,7 @@
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+    <script>
+        console.log('Hi!');
+    </script>
 @stop

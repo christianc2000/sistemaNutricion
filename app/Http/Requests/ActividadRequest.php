@@ -13,7 +13,11 @@ class ActividadRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        if ($this->user()->id == auth()->user()->id) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -23,9 +27,18 @@ class ActividadRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [
+        return [
             'nombre' => 'required',
-            'MEC' => 'required'
+            'MET' => 'required',
         ];
-        }
+    }
+    public function messages()
+    {
+        return [
+            'nombre.required' => 'Debe ingresar el NOMBRE de la Actividad',
+            'MET.required' => 'Debe ingresar el MEC de la Actividad',
+
+            // 'estado.boolean'=> 'debe seleccionar el estado del trabajador'
+        ];
+    }
 }
