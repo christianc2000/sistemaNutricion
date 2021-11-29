@@ -15,10 +15,10 @@ class CreateAlimentosTable extends Migration
     {
         Schema::create('alimentos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre',30);
-            $table->string('nombreComun',30)->nullable();
-            $table->integer('valorNutricional');
-            $table->text('preparacion')->nullable();
+            $table->string('nombre');
+            $table->string('nombreComun')->nullable();
+            $table->integer('pesoUnico');//en gramos
+            $table->string('foto')->nullable();
             $table->foreignId('tipo_alimento_id')->references('id')->on('tipo_alimentos')
             ->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

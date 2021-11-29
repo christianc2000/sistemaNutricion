@@ -15,13 +15,15 @@ class CreateAlimentoNutrientesTable extends Migration
     {
         Schema::create('alimento_nutrientes', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedInteger('cantidad');
             $table->foreignId('alimento_id')->references('id')->on('alimentos')
             ->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('nutriente_id')->references('id')->on('nutrientes')
             ->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('cantidad');
             $table->foreignId('unidad_medida_id')->references('id')->on('unidad_medidas')
             ->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
         });
     }
