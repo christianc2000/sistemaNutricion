@@ -1,0 +1,25 @@
+div .form-group  {
+   
+    display:flex;  flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    width: 75%;
+    align-items: right;
+}
+
+div .form-group input {
+    
+    text-align: left;
+  
+    align-items: center;
+
+}
+
+div .form-group-2  {
+   
+    display:flex;  flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    width: 50%;
+    align-items: right;
+}
