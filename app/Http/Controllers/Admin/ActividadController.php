@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ActividadRequest;
 use Illuminate\Http\Request;
 use App\Models\Actividad;
 
@@ -28,7 +29,7 @@ class ActividadController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.actividad.create');
     }
 
     /**
@@ -37,9 +38,9 @@ class ActividadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ActividadRequest $request)
     {
-        //
+           return "validación con exito";
     }
 
     /**
@@ -50,18 +51,18 @@ class ActividadController extends Controller
      */
     public function show(Actividad $actividad)
     {
-        //
+        return view('admin.actividad.show',compact('actividad'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response]
      */
-    public function edit(Actividad $fis)
+    public function edit(Actividad $actividad)
     {
-        return view('admin.actividad.edit', 'fis');
+        return view('admin.actividad.edit', compact('actividad'));
     }
 
     /**
@@ -73,7 +74,8 @@ class ActividadController extends Controller
      */
     public function update(Request $request, Actividad $actividad)
     {
-        //
+
+        return view('admin.actividad.index', 'actividad');
     }
 
     /**

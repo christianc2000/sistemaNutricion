@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Nutriente extends Model
 {
     use HasFactory;
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function alimentonutrientes(){
+        return $this->hasMany(AlimentoNutriente::class);
+    }
 }

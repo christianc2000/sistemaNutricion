@@ -16,8 +16,8 @@ class CreateActividadsTable extends Migration
         Schema::create('actividads', function (Blueprint $table) {
             $table->id();
             $table->string('nombre',40);
-            $table->integer('valor_tiempo')->nullable();
-            $table->integer('valor_calorias')->nullable();
+            $table->integer('MET')->nullable();
+            $table->float('ctte')->nullable();
             $table->string('tipo',1)->default('F');
             $table->timestamps();
         });

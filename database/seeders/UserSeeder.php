@@ -19,5 +19,17 @@ class UserSeeder extends Seeder
             'email'=>'Nutridiet@gmail.com',
             'password'=>bcrypt('12345678')
          ]);
+
+         User::create([
+             'name'=>'Paciente',
+             'email'=>'DanielM@gmail.com',
+             'password'=>bcrypt('11112222')
+         ]);
+
+         User::create([
+            'name'=>'Paciente',
+            'email'=>'Junior78@gmail.com',
+            'password'=>bcrypt('33334444')
+        ]);
     }
 }

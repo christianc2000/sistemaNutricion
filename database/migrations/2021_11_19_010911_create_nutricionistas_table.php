@@ -14,10 +14,10 @@ class CreateNutricionistasTable extends Migration
     public function up()
     {
         Schema::create('nutricionistas', function (Blueprint $table) {
-            $table->foreignId('id')->references('id')->on('personas')
-            ->onUpdate('cascade')->onDelete('cascade');
-            $table->primary('id');
-            $table->string('profesion',40);
+            $table->id();
+            $table->string('profesion', 40);
+            $table->foreign('id')->references('id')->on('personas');
+
             $table->timestamps();
         });
     }
