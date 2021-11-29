@@ -26,7 +26,8 @@ class PersonaSeeder extends Seeder
                 'sexo' => 'M',
                 'celular' => '77273232',
                 'correo' => 'Nutridiet@gmail.com',
-                'tipo'=> 'N'
+                'tipo'=> 'N',
+                'user_id'=>1
             ],
             [
                 'ci' => '1234123s',
@@ -37,6 +38,7 @@ class PersonaSeeder extends Seeder
                 'celular' => '67748378',
                 'correo' => 'DanielM@gmail.com',
                 'tipo'=>'P',
+                'user_id'=>2
             ],
             [
                 'ci' => '9821747',
@@ -47,6 +49,7 @@ class PersonaSeeder extends Seeder
                 'celular' => '78988739',
                 'correo' => 'Junior78@gmail.com',
                 'tipo'=>'P',
+                'user_id'=>3
             ]
         ]);
         foreach ($personas as $persona){
