@@ -28,7 +28,7 @@
                         <tr>
 
                             <td> {{ $alimento->nombre }} </td>
-                            <td> 21 </td>
+                            <td> {{$alimento->alimentonutrientes->firs()}} </td>
                             <td> 22 </td>
                             <td> 3 </td>
                             <td> 33 </td>
@@ -68,7 +68,7 @@
                         <tr>
 
                             <td> {{ $receta->nombre }} </td>
-                            <td> 21 </td>
+                            <td> {{}} </td>
                             <td> 22 </td>
                             <td> 3 </td>
                             <td> 33 </td>
