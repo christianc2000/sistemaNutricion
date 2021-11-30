@@ -10,10 +10,10 @@ class Comida extends Model
     use HasFactory;
     protected $guarded=['id','created_at','updated_at'];
 //relación de muchos a muchos
-    public function alimentos(){
-        return $this->belongsToMany(Alimento::class);
+    public function alimentocomidas(){
+        return $this->hasMany(AlimentoComidas::class);
     }
-    public function recetas(){
-        return $this->belongsToMany(Receta::class);
+    public function comidarecetas(){
+        return $this->hasMany(ComidaRecetas::class);
     }
 }

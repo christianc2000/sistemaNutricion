@@ -29,7 +29,7 @@ class RecetaSeeder extends Seeder
 
         ]);
 
-        $a = Alimento::all();
+        /*$a = Alimento::all();
         $receta = Receta::all()->find(1);
         $receta->alimentos()->attach($a->where('nombre', '=', 'Espinaca')->first()->id,['peso' => 200,]);
         $receta->alimentos()->attach($a->where('nombre', '=', 'Aguacate')->first()->id,['peso' => 600]);
@@ -37,7 +37,7 @@ class RecetaSeeder extends Seeder
         $receta->alimentos()->attach($a->where('nombre', '=', 'Aceite de oliva')->first()->id,['peso' => 5]);
         $receta->alimentos()->attach($a->where('nombre', '=', 'Vinagre')->first()->id,['peso' => 5]);
         $receta->alimentos()->attach($a->where('nombre', '=', 'Naranja')->first()->id,['peso' => 90]);
-
+*/
         // Desayuno, Bruch, Almuerzo, Siesta, Cena
         //'cantidad','medida'(puede ser P=Porcion, G=gramos),'cumplido','fechaHora_establecida','fechaHora_cumplida'
 

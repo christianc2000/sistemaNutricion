@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Alimento;
+use App\Models\Nutriente;
 use App\Models\TipoAlimento;
 use Illuminate\Database\Seeder;
 
@@ -81,5 +82,13 @@ class AlimentoSeeder extends Seeder
         foreach ($alimentos as $alimento) {
             Alimento::create($alimento);
         }
+
+        /*$alimento=Alimento::all()->first();
+        $n=Nutriente::all();
+        $alimento->nutrientes()->attach($n->where('nombre','=','Energía')->first()->id,['cantidad'=>200]);
+        $alimento->nutrientes()->attach($n->where('nombre','=','H. Carbono')->first()->id,['cantidad'=>50]);
+        $alimento->nutrientes()->attach($n->where('nombre','=','Grasa')->first()->id,['cantidad'=>100]);
+        $alimento->nutrientes()->attach($n->where('nombre','=','Proteína')->first()->id,['cantidad'=>250]);
+    */
     }
 }

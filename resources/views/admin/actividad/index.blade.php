@@ -13,7 +13,6 @@
     </strong>
     <a class="btn btn-secondary btn-sm float-right" href="{{ route('admin.actividad.create') }}">Nueva Actividad</a>
 
-    <form action="">
         <table id="fisica" class="table table-striped table-bordered shadow-lg mt-3" style="width:100%">
             <thead class="bg-dark text-white">
                 <tr>

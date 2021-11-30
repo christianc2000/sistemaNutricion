@@ -26,7 +26,7 @@ class ComidaSeeder extends Seeder
         foreach ($comidas as $c) {
             Comida::create($c);
         }
-        $comida=Comida::all()->first();
+        /*$comida=Comida::all()->first();
         $r=Receta::all();
         $a=Alimento::all();
         $comida->recetas()->attach($r->where('nombre', '=', 'Ensalada de aguacate y naranja')->first()->id,
@@ -34,6 +34,6 @@ class ComidaSeeder extends Seeder
         $comida->alimentos()->attach($a->where('nombre', '=', 'Naranja')->first()->id,
         ['cantidad'=>'250','cumplido'=>false,'fechaHora_establecida'=>'2021-11-30 07:00:00']);
         $comida->alimentos()->attach($a->where('nombre', '=', 'Néctar de mango')->first()->id,
-        ['cantidad'=>'500','cumplido'=>false,'fechaHora_establecida'=>'2021-11-30 07:00:00']);
+        ['cantidad'=>'500','cumplido'=>false,'fechaHora_establecida'=>'2021-11-30 07:00:00']);*/
     }
 }

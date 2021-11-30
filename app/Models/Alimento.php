@@ -16,17 +16,26 @@ class Alimento extends Model
         return $this->belongsTo(TipoAlimento::class);
     }
 // relaciones de muchos a muchos
-    public function comidas()
+    /*public function comidas()
     {
-        return $this->belongsToMany(Comida::class)->withTimestamps();
+        return $this->belongsToMany(Comida::class)->withTimestamps()->withPivot('cumplido','cantidad','fechaHora_establecida','fechaHora_cumplida');
     }
     public function recetas()
     {
-        return $this->belongsToMany(Receta::class);
+        return $this->belongsToMany(Receta::class)->withTimestamps()->withPivot('id','peso');
     }
     public function nutrientes()
     {
-        return $this->belongsToMany(Nutrientes::class)->withTimestamps();
+        return $this->belongsToMany(Nutriente::class)->withTimestamps()->withPivot('id','cantidad');
     }
-    ///
+    //*/
+    public function alimentocomidas(){
+        return $this->hasMany(AlimentoComidas::class,'alimento_id','id');
+    }
+    public function alimentorecetas(){
+        return $this->hasMany(AlimentoRecetas::class,'alimento_id','id');
+    }
+    public function alimentonutrientes(){
+        return $this->hasMany(AlimentoNutrientes::class);
+    }
 }

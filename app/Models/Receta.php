@@ -11,12 +11,12 @@ class Receta extends Model
     protected $guarded=['id','created_at','updated_at'];
 
     //relaciones de muchos a muchos
-    public function alimentos()
+    public function alimentorecetas()
     {
-        return $this->belongsToMany(Alimento::class);
+        return $this->hasMany(AlimentoRecetas::class);
     }
-    public function comidas()
+    public function comidarecetas()
     {
-        return $this->belongsToMany(Comida::class);
+        return $this->hasMany(ComidaRecetas::class);
     }
 }

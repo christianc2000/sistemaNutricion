@@ -10,9 +10,9 @@ class Nutriente extends Model
     use HasFactory;
     protected $guarded = ['id', 'created_at', 'updated_at'];
 //relación de muchos a muchos
-    public function alimentos()
+    public function alimentonutrientes()
     {
-        return $this->belongsToMany(Alimento::class);
+        return $this->hasMany(AlimentoNutrientes::class);
     }
 //relaciones inversa de uno a muchos
     public function tiponutriente()
