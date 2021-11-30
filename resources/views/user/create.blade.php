@@ -57,18 +57,18 @@
 
         <!--*************trabajador para el cual crear ususario**************************-->
         <div class="">
-            <label class="control-label col-md-2 col-sm-3 col-xs-12" for="">Trabajador</label>
+            <label class="control-label col-md-2 col-sm-3 col-xs-12" for="">persona</label>
             <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="ci_trab">
-                <option selected value="">Seleccion al personal</option>
+                <option selected value="">Selecciona a la persona</option>
                 @foreach ($users as $user)
                     {{-- <option value="{{$user->ci}}" >{{$user}} </option> --}}
-                    <option value="{{ $user->id }}">{{ $user->id }} {{ $user->ap }} </option>
+                    <option value="{{ $user->id }}">{{ $user->nombres }} {{ $user->apellidos }} </option>
                 @endforeach
             </select>
         </div>
 
         <!--***************************************-->
-        {{-- <div class="mb-3">
+        <div class="mb-3">
             <label class="control-label col-md-2 col-sm-3 col-xs-12">Lista de roles</label>
             @foreach ($roles as $role)
                 <div class="form-check">
@@ -79,7 +79,7 @@
             @error('rol')
                 <small>*{{ $message }} </small>
             @enderror
-        </div> --}}
+        </div>
 
         <!--asignar rol-->
         <a href="{{ route('users.index') }}" class="btn btn-secondary" tabindex="5">Cancelar</a>

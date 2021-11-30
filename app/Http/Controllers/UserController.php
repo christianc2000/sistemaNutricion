@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Persona;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
@@ -29,10 +31,10 @@ class UserController extends Controller
     {
         $users = Persona::all();
 
-        // $roles = Role::all();
+        $roles = Role::all();
 
-        // return view('user.create', compact('users', 'roles'));
-        return view('user.create', compact('users'));
+        return view('user.create', compact('users', 'roles'));
+        // return view('user.create', compact('users'));
     }
 
     /**
@@ -49,9 +51,9 @@ class UserController extends Controller
         $users->password = bcrypt($request->get('password'));
         $users->persona_id = $request->get('ci_trab');
         $users->save();
-        // $users->assignRole($request->rol); //crear rol
+        $users->assignRole($request->rol); //crear rol
         // $users->syncRoles($request->rol);//sincronizar rol
-        //    return redirect()->route('users.edit', $user)->with('info', 'Se asignó los roles correctamente');
+        //    return redirect()->route('users.edit', $users)->with('info', 'Se asignó los roles correctamente');
         // User::create($request->all());
 
         // activity()->useLog('Usuario')->log('Nuevo')->subject();
@@ -84,8 +86,9 @@ class UserController extends Controller
     {
         $users = Persona::all();
 
-        // return view('user.edit', compact('user', 'users', 'roles'));
-        return view('user.edit', compact('user', 'users'));
+        $roles = Role::all();
+        return view('user.edit', compact('user', 'users', 'roles'));
+        // return view('user.edit', compact('user', 'users'));
 
     }
 
@@ -108,7 +111,7 @@ class UserController extends Controller
         // $user->save();
         // $user->persona_id = $request->get('ci_trab');
         $user->save();
-        // $user->syncRoles($request->rol); //sincronizar rol
+        $user->syncRoles($request->rol); //sincronizar rol
 
         // activity()->useLog('Usuario')->log('Editado')->subject();
         // $lastActivity = Activity::all()->last();

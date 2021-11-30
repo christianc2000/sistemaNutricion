@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\NutricionistaController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UnidadMedidaController;
 use App\Http\Controllers\UserController;
+use Spatie\Permission\Contracts\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,7 @@ Route::group(['middleware'=>'auth'], function(){//si no esta logueado me manda a
     Route::resource('unidadMedida', UnidadMedidaController::class);
     Route::resource('users', UserController::class);
     Route::resource('nutricionistas', NutricionistaController::class);
+    Route::resource('roles', RoleController::class);
 
 
 });

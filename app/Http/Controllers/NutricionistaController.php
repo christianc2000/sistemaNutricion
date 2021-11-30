@@ -16,9 +16,9 @@ class NutricionistaController extends Controller
      */
     public function index()
     {
-        $pacientes = Nutricionista::all();
+        $nutricionistas = Nutricionista::all();
         $personas = Persona::all();
-        return view('nutricionista.index',compact('pacientes','personas'));
+        return view('nutricionista.index',compact('nutricionistas','personas'));
     }
 
     /**
@@ -28,8 +28,8 @@ class NutricionistaController extends Controller
      */
     public function create()
     {
-        $personas = Persona::all();
-        return view('nutricionista.create',compact('personas'));
+        // $personas = Persona::all();
+        return view('nutricionista.create');
     }
 
     /**
@@ -40,7 +40,21 @@ class NutricionistaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $persona = new Persona();
+        $persona->ci = $request->get('ci');
+        $persona->nombres = $request->get('nombres');
+        $persona->apellidos= $request->get('apellidos');
+        $persona->fechaNacimiento = $request->get('fechaNacimiento');
+        $persona->sexo = $request->get('sexo');
+        $persona->celular = $request->get('celular');
+        $persona->save();
+
+        $paciente = new Nutricionista();
+        $paciente->id=$persona->id;
+        $paciente->profesion = $request->get('profesion');
+
+        $paciente->save();
+        return redirect()->route('nutricionistas.index');
     }
 
     /**
@@ -60,9 +74,10 @@ class NutricionistaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Nutricionista $nutricionista)
     {
-        //
+        $personas = Persona::all();
+        return view('nutricionista.edit',compact('nutricionista','personas'));
     }
 
     /**
@@ -72,9 +87,22 @@ class NutricionistaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Nutricionista $nutricionista)
     {
-        //
+        $persona = Persona::all()->where('id',$nutricionista->id)->first();
+        $persona->ci = $request->get('ci');
+        $persona->nombres = $request->get('nombres');
+        $persona->apellidos= $request->get('apellidos');
+        $persona->fechaNacimiento = $request->get('fechaNacimiento');
+        $persona->sexo = $request->get('sexo');
+        $persona->celular = $request->get('celular');
+        $persona->save();
+
+        $nutricionista->id=$persona->id;
+        $nutricionista->profesion = $request->get('profesion');
+
+        $nutricionista->save();
+        return redirect()->route('nutricionistas.index');
     }
 
     /**
@@ -83,8 +111,12 @@ class NutricionistaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Nutricionista $nutricionista)
     {
-        //
+        $persona = Persona::all()->where('id',$nutricionista->id)->first();
+        $nutricionista->delete();
+        $persona->delete();
+
+        return redirect()->route('nutricionistas.index');
     }
 }
