@@ -15,13 +15,13 @@ class CreateAlimentoRecetasTable extends Migration
     {
         Schema::create('alimento_recetas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('alimentoA_id')->references('id')->on('alimentos')
-            ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('alimentoB_id')->references('id')->on('alimentos')
-            ->onUpdate('cascade')->onDelete('cascade');
-            $table->integer('cantidad');
-            $table->foreignId('unidad_medida_id')->references('id')->on('unidad_medidas')
-            ->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedInteger('peso'); //gramos
+
+            $table->unsignedBigInteger('alimento_id');
+            $table->unsignedBigInteger('receta_id');
+
+            $table->foreign('alimento_id')->references('id')->on('alimentos');
+            $table->foreign('receta_id')->references('id')->on('recetas');
             $table->timestamps();
         });
     }

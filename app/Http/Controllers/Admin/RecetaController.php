@@ -3,15 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AlimentoRequest;
-use App\Models\Alimento;
-use App\Models\AlimentoNutrientes;
-use App\Models\Nutriente;
-use App\Models\Receta;
-use Database\Seeders\NutrienteSeeder;
 use Illuminate\Http\Request;
 
-class AlimentoController extends Controller
+class RecetaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,10 +14,7 @@ class AlimentoController extends Controller
      */
     public function index()
     {
-        $alimentos = Alimento::all();
-        $recetas=Receta::All();
-        return view('admin.alimento.index',compact('alimentos','recetas'));
-
+        //
     }
 
     /**
@@ -33,8 +24,7 @@ class AlimentoController extends Controller
      */
     public function create()
     {
-
-        return view('admin.alimento.create');
+        //
     }
 
     /**
@@ -43,10 +33,9 @@ class AlimentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AlimentoRequest $request)
+    public function store(Request $request)
     {
-
-        return redirect()->route('admin.alimento.index');
+        //
     }
 
     /**
@@ -55,10 +44,9 @@ class AlimentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Alimento $alimento)
+    public function show($id)
     {
-
-        return view('admin.actividad.show', compact('alimento'));
+        //
     }
 
     /**
@@ -67,9 +55,9 @@ class AlimentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Alimento $alimento)
+    public function edit($id)
     {
-        return view('admin.alimento.edit', compact('alimento'));
+        //
     }
 
     /**
@@ -79,11 +67,9 @@ class AlimentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AlimentoRequest $request, Alimento $alimento)
+    public function update(Request $request, $id)
     {
-
-        return redirect()->route('admin.actividad.index');
-
+        //
     }
 
     /**
@@ -92,9 +78,8 @@ class AlimentoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Alimento $alimento)
+    public function destroy($id)
     {
-        Alimento::destroy($alimento->id);
-        return redirect()->route('admin.alimento.index');
+        //
     }
 }

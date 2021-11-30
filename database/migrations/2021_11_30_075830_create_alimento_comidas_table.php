@@ -15,15 +15,16 @@ class CreateAlimentoComidasTable extends Migration
     {
         Schema::create('alimento_comidas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('cantidad');
+            $table->boolean('cumplido');
+            $table->timestamp('fechaHora_establecida');
+            $table->timestamp('fechaHora_cumplida')->nullable();
+
             $table->foreignId('alimento_id')->references('id')->on('alimentos')
-            ->onUpdate('cascade')->onDelete('cascade');
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('comida_id')->references('id')->on('comidas')
-            ->onUpdate('cascade')->onDelete('cascade');
-            $table->float('energia');
-            $table->float('grasa');
-            $table->float('hCarbono');
-            $table->float('proteina');
-            $table->float('fibraAlimentaria');
+                ->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

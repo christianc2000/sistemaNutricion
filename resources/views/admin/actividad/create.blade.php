@@ -10,16 +10,25 @@
     <div class="card">
         <div class="card-body">
             <form action="{{ route('admin.actividad.store') }}" method="POST">
+
                 @csrf
+
                 <div class="form-group">
                     <label for="">Nombre: </label>
                     <input type="text" name="nombre" id="nombre" class="form-control"
-                        placeholder="Ingrese el nombre de la actividad" aria-describedby="helpId">
+                        placeholder="Ingrese el nombre de la actividad" aria-describedby="helpId"
+                        value="{{ old('nombre') }}">
+                    @error('nombre')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 <div class="form-group">
-                    <label for="">MEC:</label>
-                    <input type="number" size=30 style="width:200px" name="MEC" id="MEC" min="1" class="form-control"
-                        placeholder="Nro MEC" aria-describedby="helpId">
+                    <label for="">MET:</label>
+                    <input type="number" size=30 style="width:200px" name="MET" id="MET" min="1" class="form-control"
+                        placeholder="Nro MET" aria-describedby="helpId" value="{{ old('MET') }}">
+                    @error('MET')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 {{-- <div class="form-group">
                     <label for="">Tipo</label>
@@ -31,9 +40,9 @@
                     <a href="{{ route('admin.actividad.index') }}" class="btn btn-secondary">Cancelar</a>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
+
+            </form>
         </div>
-        </form>
-    </div>
     </div>
 @stop
 
