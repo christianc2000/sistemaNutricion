@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Persona;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -26,11 +27,12 @@ class UserController extends Controller
      */
     public function create()
     {
-        $users = User::all();
+        $users = Persona::all();
 
         // $roles = Role::all();
 
-        return view('user.create', compact('users', 'roles'));
+        // return view('user.create', compact('users', 'roles'));
+        return view('user.create', compact('users'));
     }
 
     /**
@@ -45,9 +47,9 @@ class UserController extends Controller
         $users->name = $request->get('name');
         $users->email = $request->get('email');
         $users->password = bcrypt($request->get('password'));
-        $users->ci_trab = $request->get('ci_trab');
+        $users->persona_id = $request->get('ci_trab');
         $users->save();
-        $users->assignRole($request->rol); //crear rol
+        // $users->assignRole($request->rol); //crear rol
         // $users->syncRoles($request->rol);//sincronizar rol
         //    return redirect()->route('users.edit', $user)->with('info', 'Se asignó los roles correctamente');
         // User::create($request->all());
@@ -78,11 +80,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $users = User::all();
+        $users = Persona::all();
 
-        return view('user.edit', compact('user', 'users', 'roles'));
+        // return view('user.edit', compact('user', 'users', 'roles'));
+        return view('user.edit', compact('user', 'users'));
+
     }
 
     /**
@@ -92,9 +96,26 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $ci)
     {
-        
+        $user = User::find($ci);
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        if ($request->password != 'xxxxxxxxx') {
+            $user->password = bcrypt($request->get('password'));
+        }
+        // $user->persona_id = null;
+        // $user->save();
+        // $user->persona_id = $request->get('ci_trab');
+        $user->save();
+        // $user->syncRoles($request->rol); //sincronizar rol
+
+        // activity()->useLog('Usuario')->log('Editado')->subject();
+        // $lastActivity = Activity::all()->last();
+        // $lastActivity->subject_id = User::all()->last()->id;
+        // $lastActivity->save();
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -103,8 +124,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        // activity()->useLog('Usuario')->log('Eliminado')->subject();
+        // $lastActivity = Activity::all()->last();
+        // $lastActivity->subject_id = User::all()->last()->id;
+        // $lastActivity->save();
+        
+        $user->delete();
+
+
+        return redirect()->route('users.index');
     }
 }

@@ -62,13 +62,13 @@
                 <option selected value="">Seleccion al personal</option>
                 @foreach ($users as $user)
                     {{-- <option value="{{$user->ci}}" >{{$user}} </option> --}}
-                    <option value="{{ $user->ci }}">{{ $user->nombre }} {{ $user->ap }} </option>
+                    <option value="{{ $user->id }}">{{ $user->id }} {{ $user->ap }} </option>
                 @endforeach
             </select>
         </div>
 
         <!--***************************************-->
-        <div class="mb-3">
+        {{-- <div class="mb-3">
             <label class="control-label col-md-2 col-sm-3 col-xs-12">Lista de roles</label>
             @foreach ($roles as $role)
                 <div class="form-check">
@@ -79,7 +79,7 @@
             @error('rol')
                 <small>*{{ $message }} </small>
             @enderror
-        </div>
+        </div> --}}
 
         <!--asignar rol-->
         <a href="{{ route('users.index') }}" class="btn btn-secondary" tabindex="5">Cancelar</a>

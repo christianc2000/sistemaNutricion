@@ -265,6 +265,16 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
+            'text' => 'Usuario',
+            'url'  => 'users',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Nutricionista',
+            'url'  => 'nutricionistas',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
             'text'    => 'CU 26-33-36',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
