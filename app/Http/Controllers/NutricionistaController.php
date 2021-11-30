@@ -2,32 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Nutricionista;
 use App\Models\Paciente;
 use App\Models\Persona;
-use App\Models\Nutricionista;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
-class PacienteController extends Controller
+class NutricionistaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function __construct(){
         // $this->middleware('auth');//?
 
-        $this->middleware('can:paciente.index')->only('index');
-        $this->middleware('can:paciente.create')->only('create', 'store');
-        $this->middleware('can:paciente.edit')->only('edit', 'update');
-        $this->middleware('can:paciente.destroy')->only('destroy');
+        $this->middleware('can:nutricionistas.index')->only('index');
+        $this->middleware('can:nutricionistas.create')->only('create', 'store');
+        $this->middleware('can:nutricionistas.edit')->only('edit', 'update');
+        $this->middleware('can:nutricionistas.destroy')->only('destroy');
     }
     public function index()
     {
-        $pacientes = Paciente::all();
+        $nutricionistas = Nutricionista::all();
         $personas = Persona::all();
-        return view('paciente.index',compact('pacientes','personas'));
+        return view('nutricionista.index',compact('nutricionistas','personas'));
     }
 
     /**
@@ -37,9 +37,8 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        $nutricionistas = Nutricionista::all();
-        $personas = Persona::all();
-        return view('paciente.create',compact('nutricionistas','personas'));
+        // $personas = Persona::all();
+        return view('nutricionista.create');
     }
 
     /**
@@ -59,14 +58,12 @@ class PacienteController extends Controller
         $persona->celular = $request->get('celular');
         $persona->save();
 
-        $paciente = new Paciente();
+        $paciente = new Nutricionista();
         $paciente->id=$persona->id;
-        $paciente->fechaRegistro =date('Y-m-d H:i:s');
-        $paciente->nutricionista_id = Auth::user()->persona_id;
+        $paciente->profesion = $request->get('profesion');
 
         $paciente->save();
-        return redirect()->route('paciente.index');
-
+        return redirect()->route('nutricionistas.index');
     }
 
     /**
@@ -86,11 +83,10 @@ class PacienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Paciente $paciente)
+    public function edit(Nutricionista $nutricionista)
     {
-        $nutricionistas = Nutricionista::all();
         $personas = Persona::all();
-        return view('paciente.edit',compact('paciente','personas','nutricionistas'));
+        return view('nutricionista.edit',compact('nutricionista','personas'));
     }
 
     /**
@@ -100,9 +96,9 @@ class PacienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Paciente $paciente)
+    public function update(Request $request,Nutricionista $nutricionista)
     {
-        $persona = Persona::all()->where('id',$paciente->id)->first();
+        $persona = Persona::all()->where('id',$nutricionista->id)->first();
         $persona->ci = $request->get('ci');
         $persona->nombres = $request->get('nombres');
         $persona->apellidos= $request->get('apellidos');
@@ -111,12 +107,11 @@ class PacienteController extends Controller
         $persona->celular = $request->get('celular');
         $persona->save();
 
-        $paciente->id=$persona->id;
-        $paciente->fechaRegistro =date('Y-m-d H:i:s');
-        $paciente->nutricionista_id = Auth::user()->persona_id;
+        $nutricionista->id=$persona->id;
+        $nutricionista->profesion = $request->get('profesion');
 
-        $paciente->save();
-        return redirect()->route('paciente.index');
+        $nutricionista->save();
+        return redirect()->route('nutricionistas.index');
     }
 
     /**
@@ -125,13 +120,12 @@ class PacienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Paciente $paciente)
+    public function destroy(Nutricionista $nutricionista)
     {
-        $persona = Persona::all()->where('id',$paciente->id)->first();
-        $paciente->delete();
+        $persona = Persona::all()->where('id',$nutricionista->id)->first();
+        $nutricionista->delete();
         $persona->delete();
 
-        return redirect()->route('paciente.index');
-        
+        return redirect()->route('nutricionistas.index');
     }
 }

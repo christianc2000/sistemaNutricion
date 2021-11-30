@@ -15,11 +15,10 @@ class NutricionistaSeeder extends Seeder
      */
     public function run()
     {
-        $n=Persona::all();
-        $n=$n->where('tipo','=','N')->first();
         Nutricionista::create([
-            'id'=>$n->id,
-            'profesion'=>'Dietética'
-        ]);
+            'id'=>1,
+            'profesion'=>'Nutriologo'
+             ]);
+
     }
 }

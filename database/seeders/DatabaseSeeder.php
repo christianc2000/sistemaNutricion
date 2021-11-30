@@ -17,10 +17,16 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UserSeeder::class);
         $this->call(PersonaSeeder::class);
+
+        $this->call(UserSeeder::class);
+        $this->call(RoleSeeder::class);
         $this->call(NutricionistaSeeder::class);
         $this->call(PacienteSeeder::class);
         $this->call(TratamientoSeeder::class);
         $this->call(ControlSeeder::class);
         $this->call(ActividadSeeder::class);
+
+        $this->call(UserSeeder::class);
+        $this->call(RoleSeeder::class);
     }
 }

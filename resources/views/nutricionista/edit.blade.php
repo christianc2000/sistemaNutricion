@@ -3,31 +3,31 @@
 @section('title', 'EDITAR PACIENTE')
 
 @section('content_header')
-    <h1>Editar Pacientes</h1>
+    <h1>Editar Nutricionista</h1>
 @stop
 
 @section('content')
-<form action="{{route('paciente.update',compact('paciente'))}}" method="POST">
+<form action="{{route('nutricionistas.update',compact('nutricionista'))}}" method="POST">
 <div class="form-group">
     <label for="ci">Ci</label>
-    <input type="text" class="form-control" id="ci" name = "ci" placeholder="carnet de identidad" required value="{{$personas->where('id',$paciente->id)->first()->ci}}">
+    <input type="text" class="form-control" id="ci" name = "ci" placeholder="carnet de identidad" required value="{{$personas->where('id',$nutricionista->id)->first()->ci}}">
 </div>
 <div class="form-group">
     <label for="nombres">Nombres </label>
-    <input type="text" class="form-control" id="nombres" name = "nombres" placeholder="nombres" required value="{{$personas->where('id',$paciente->id)->first()->nombres}}">
+    <input type="text" class="form-control" id="nombres" name = "nombres" placeholder="nombres" required value="{{$personas->where('id',$nutricionista->id)->first()->nombres}}">
 </div>
 <div class="form-group">
     <label for="apellidos">Apellidos </label>
-    <input type="text" class="form-control" id="apellidos" name = "apellidos" placeholder="apellidos" required value="{{$personas->where('id',$paciente->id)->first()->apellidos}}">
+    <input type="text" class="form-control" id="apellidos" name = "apellidos" placeholder="apellidos" required value="{{$personas->where('id',$nutricionista->id)->first()->apellidos}}">
 </div>
 <div class="form-group">
     <label for="fechaNacimiento">Fecha de nacimiento </label>
-    <input type="date"  class="form-control" id="fechaNacimiento" name = "fechaNacimiento" placeholder="Fecha de Nacimiento" required value="{{$personas->where('id',$paciente->id)->first()->fechaNacimiento}}">
+    <input type="date"  class="form-control" id="fechaNacimiento" name = "fechaNacimiento" placeholder="Fecha de Nacimiento" required value="{{$personas->where('id',$nutricionista->id)->first()->fechaNacimiento}}">
 </div>
 <div class="form-group">
     <label for="sexo">Sexo</label>
     <select class="form-control" id="sexo" name = "sexo">
-        @switch($personas->where('id',$paciente->id)->first()->sexo )
+        @switch($personas->where('id',$nutricionista->id)->first()->sexo )
             @case("F")
             <option value="M">Masculino</option>
             <option selected value="F">Femenino</option>
@@ -51,11 +51,16 @@
 </div>
 <div class="form-group">
     <label for="celular">Celular </label>
-    <input type="number"  class="form-control" id="celular" name = "celular" placeholder="Numero de celular" required value="{{$personas->where('id',$paciente->id)->first()->celular}}">
+    <input type="number"  class="form-control" id="celular" name = "celular" placeholder="Numero de celular" required value="{{$personas->where('id',$nutricionista->id)->first()->celular}}">
+</div>
+<div class="form-group">
+    <label for="apellidos">Profesion </label>
+    <input type="text" class="form-control" id="profesion" name="profesion" placeholder="profesion" required
+        value="{{ $nutricionista->profesion }}">
 </div>
 
-
-  <a href="{{route('paciente.index')}}" class="btn btn-danger mb-4" >Cancelar</a>
+  
+  <a href="{{route('nutricionistas.index')}}" class="btn btn-danger mb-4" >Cancelar</a>
   <button class="btn btn-primary mb-4" type="submit" >Guardar</button>
 @csrf
 @method('put')
