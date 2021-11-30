@@ -54,21 +54,7 @@
     <input type="number"  class="form-control" id="celular" name = "celular" placeholder="Numero de celular" required value="{{$personas->where('id',$paciente->id)->first()->celular}}">
 </div>
 
-  <div class="form-group">
-    <label for="nutricionista">nutricionistas</label>
-    <select class="form-control" id="nutricionista_id" name = "nutricionista_id">
-    @foreach ($nutricionistas as $nutricionista)
-    @if ($nutricionista->id == $paciente->id)
-    <option selected value ={{$nutricionista->id}}  >{{$personas->where('id',$nutricionista->id)->first()->nombres . " " . $personas->where('id',$nutricionista->id)->first()->apellidos}}</option>
-    @else
-    <option value ={{$nutricionista->id}}  >{{$personas->where('id',$nutricionista->id)->first()->nombres . " " . $personas->where('id',$nutricionista->id)->first()->apellidos}}</option>
-    @endif
-        
-    @endforeach
-        
 
-    </select>
-  </div>
   <a href="{{route('paciente.index')}}" class="btn btn-danger mb-4" >Cancelar</a>
   <button class="btn btn-primary mb-4" type="submit" >Guardar</button>
 @csrf
