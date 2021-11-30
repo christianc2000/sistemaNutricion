@@ -12,6 +12,14 @@ class UnidadMedidaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        // $this->middleware('auth');//?
+
+        $this->middleware('can:unidadMedida.index')->only('index');
+        $this->middleware('can:unidadMedida.create')->only('create', 'store');
+        $this->middleware('can:unidadMedida.edit')->only('edit', 'update');
+        $this->middleware('can:unidadMedida.destroy')->only('destroy');
+    }
     public function index()
     {
 
