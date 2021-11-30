@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Paciente;
 use App\Models\Persona;
 use App\Models\Nutricionista;
+use Illuminate\Support\Facades\Auth;
 
 class PacienteController extends Controller
 {
@@ -53,7 +54,7 @@ class PacienteController extends Controller
         $paciente = new Paciente();
         $paciente->id=$persona->id;
         $paciente->fechaRegistro =date('Y-m-d H:i:s');
-        $paciente->nutricionista_id = $request->get('nutricionista_id');
+        $paciente->nutricionista_id = Auth::user()->persona_id;
 
         $paciente->save();
         return redirect()->route('paciente.index');
@@ -104,7 +105,7 @@ class PacienteController extends Controller
 
         $paciente->id=$persona->id;
         $paciente->fechaRegistro =date('Y-m-d H:i:s');
-        $paciente->nutricionista_id = $request->get('nutricionista_id');
+        $paciente->nutricionista_id = Auth::user()->persona_id;
 
         $paciente->save();
         return redirect()->route('paciente.index');
