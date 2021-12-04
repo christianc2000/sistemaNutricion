@@ -15,11 +15,13 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+       $user = User::create([
             'name'=>'nutricionista',
             'email'=>'Nutridiet@gmail.com',
             'password'=>bcrypt('12345678'),
             'persona_id'=>1
          ]);
+
+	$user->assignRole('nutricionista');
     }
 }
