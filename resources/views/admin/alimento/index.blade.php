@@ -11,7 +11,7 @@
         <a href="{{ route('admin.alimento.create') }}" class="btn btn-secondary">Crear Alimento</a>
 
         <div class="py-2">
-            <table id="alimentos" class="table table-striped table-bordered shadow-lg mt-3" style="width:100%">
+            <table id="alimentos" name="alimentos" class="table table-striped table-bordered shadow-lg mt-3" style="width:100%">
                 <thead class="bg-dark text-white">
                     <tr>
                         <th scope="col">Nombre</th>
@@ -28,13 +28,16 @@
                         <tr>
 
                             <td> {{ $alimento->nombre }} </td>
-                            <td> {{$alimento->alimentonutrientes->firs()}} </td>
-                            <td> 22 </td>
-                            <td> 3 </td>
-                            <td> 33 </td>
+                            @foreach ($alimento->alimentonutrientes as $nutrientes)
+                                @if ($nutrientes->nutriente_id<5)
+                                 <td>{{ $nutrientes->cantidad }}</td>
+                                 @endif
+                            @endforeach
+
                             <td>
                                 <form action="{{ route('admin.alimento.destroy', $alimento) }}" method="POST">
-                                    <a href="{{ route('admin.actividad.edit', $alimento) }}"
+                                    <a href="{{route('admin.alimento.show',$alimento)}}" class="btn btn-dark">Mostrar</a>
+                                    <a href="{{ route('admin.alimento.edit', $alimento) }}"
                                         class="btn btn-primary">Editar</a>
                                     @csrf
                                     <!--metodo para añadir token a un formulario-->
@@ -49,8 +52,9 @@
             </table>
         </div>
 
-        <a href="{{route('admin.alimento.create')}}" class="btn btn-info py-2" >Crear Receta</a>
+
         <div class="py-2">
+            <a href="{{route('admin.receta.create')}}" class="btn btn-info py-2">Crear Receta</a>
             <table id="recetas" class="table table-striped table-bordered shadow-lg mt-3" style="width:100%">
                 <thead class="bg-dark text-white">
                     <tr>
@@ -66,16 +70,15 @@
 
                     @foreach ($recetas as $receta)
                         <tr>
-
                             <td> {{ $receta->nombre }} </td>
-                            <td> {{}} </td>
-                            <td> 22 </td>
-                            <td> 3 </td>
-                            <td> 33 </td>
+                            @foreach ($receta->recetanutrientes as $nutrientes)
+                                @if ($nutrientes->nutriente_id<5)
+                                 <td>{{ $nutrientes->cantidad }}</td>
+                                 @endif
+                            @endforeach
                             <td>
                                 <form action="{{ route('admin.receta.destroy', $receta) }}" method="POST">
-                                    <a href="{{ route('admin.receta.edit', $receta) }}"
-                                        class="btn btn-primary">Editar</a>
+                                    <a href="{{ route('admin.receta.edit', $receta) }}" class="btn btn-primary">Editar</a>
                                     @csrf
                                     <!--metodo para añadir token a un formulario-->
                                     @method('delete')
@@ -111,7 +114,7 @@
             });
         });
     </script>
-     <script>
+    <script>
         $(document).ready(function() {
             $('#recetas').DataTable({
                 "lengthMenu": [

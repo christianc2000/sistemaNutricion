@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Alimento;
+use App\Models\AlimentoRecetas;
+use App\Models\Receta;
 use Illuminate\Http\Request;
 
 class RecetaController extends Controller
@@ -14,7 +17,7 @@ class RecetaController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -24,7 +27,9 @@ class RecetaController extends Controller
      */
     public function create()
     {
-        //
+        $alimentos=Alimento::all();
+        return view('admin.receta.create',compact('alimentos'));
+
     }
 
     /**

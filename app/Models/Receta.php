@@ -19,4 +19,7 @@ class Receta extends Model
     {
         return $this->hasMany(ComidaRecetas::class);
     }
+    public function recetanutrientes(){
+        return $this->hasMany(RecetaNutrientes::class);
+    }
 }

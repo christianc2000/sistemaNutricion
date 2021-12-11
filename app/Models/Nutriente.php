@@ -23,4 +23,7 @@ class Nutriente extends Model
     {
         return $this->belongsTo(UnidadMedida::class);
     }
+    public function recetanutrientes(){
+        return $this->hasMany(RecetaNutrientes::class);
+    }
 }

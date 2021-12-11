@@ -28,13 +28,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 Route::group(['middleware'=>'auth'], function(){//si no esta logueado me manda a loguearme
-
     Route::resource('paciente', PacienteController::class);
     Route::resource('consulta', ConsultaController::class);
     Route::resource('unidadMedida', UnidadMedidaController::class);
     Route::resource('users', UserController::class);
     Route::resource('nutricionistas', NutricionistaController::class);
     Route::resource('roles', RoleController::class);
-
-
 });
