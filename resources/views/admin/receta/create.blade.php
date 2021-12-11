@@ -46,7 +46,8 @@
                 <div>
                     <strong class="font-semibold ">INGREDIENTES</strong>
                     <br>
-                    <a href="javascript:location.reload()" class="btn btn-danger">Añadir Alimento</a>
+                    {{--<a href="javascript:location.reload()" class="btn btn-danger">Añadir Alimento</a>--}}
+                    <button onclick="mostrar()" class="bg-red-600">Mostrar</button>
 
                 </div>
             </form>
@@ -62,6 +63,11 @@
     <script>
         console.log('Hi!');
     </script>
-
+<script type="text/javascript">
+     function mostrar(){
+         let nombre= document.getElementById("nombre").value;
+         console.log(nombre);
+     }
+</script>
 
 @stop
