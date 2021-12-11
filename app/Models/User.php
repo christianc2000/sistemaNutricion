@@ -11,9 +11,10 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable implements JWTSubject {
+    
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
@@ -64,4 +65,13 @@ class User extends Authenticatable
     public function persona(){
         return $this->hasOne(Persona::class);
     }
+
+    public function getJWTIdentifier(){
+        return $this->getKey();
+    }
+    
+    public function getJWTCustomClaims(){
+        return [];
+    }
+    
 }
