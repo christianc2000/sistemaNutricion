@@ -24,7 +24,7 @@ try {
 return response()->json(compact('token'));
 }
 
-public function getAuthenticatedUser()
+public function getAuthenticatedUser(Request $request)
 {
 try {
     if (!$user = JWTAuth::parseToken()->authenticate()) {

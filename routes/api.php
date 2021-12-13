@@ -21,7 +21,7 @@ use App\Http\Controllers\Movil\AuthController;
 Route::post('/login', [AuthController::class,'authenticate']);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
-
+    Route::get('/user',[AuthController::class,'getAuthenticatedUser']);
     Route::post('/logout',[AuthController::class,'logout']);
 
 });
