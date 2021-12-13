@@ -40,24 +40,25 @@ try {
     return response()->json(compact('user'));
 }
 
-public  function  logout(Request  $request) { 
-    $this->validate($request, [ 
-        'token' => 'required' 
-    ]); 
+public  function  logout(Request  $request) {
+    $this->validate($request, [
+        'token' => 'required'
+    ]);
 
-    try { 
-        JWTAuth::invalidate($request->token); 
-        return  response()->json([ 
-            'status' => 'ok', 
-            'message' => 'Cierre de sesión exitoso.' 
-        ]); 
-    } catch (JWTException  $exception) { 
-        return  response()->json([ 
-            'status' => 'unknown_error', 
-            'message' => 'Al usuario no se le pudo cerrar la sesión.' 
-        ], 500); 
-    } 
-} 
+    try {
+        JWTAuth::invalidate($request->token);
+        return  response()->json([
+            'status' => 'ok',
+            'message' => 'Cierre de sesión exitoso.'
+        ]);
+    } catch (JWTException  $exception) {
+        return  response()->json([
+            'status' => 'unknown_error',
+	    'token'=>$request->token,
+            'message' => 'Al usuario no se le pudo cerrar la sesión.'
+        ]);
+    }
+}
 
 public function register(Request $request)
 {

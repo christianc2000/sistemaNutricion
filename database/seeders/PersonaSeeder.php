@@ -33,7 +33,7 @@ class PersonaSeeder extends Seeder
                 'ci' => '1234123s',
                 'nombres' => 'Daniel',
                 'apellidos' => 'Maldonado Gutierrez',
-                'fechaNacimiento' => '22-03-1999',
+                'fechaNacimiento' => '12-03-1999',
                 'sexo' => 'M',
                 'celular' => '67748378',
                 'correo' => 'DanielM@gmail.com',
