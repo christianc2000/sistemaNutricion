@@ -40,7 +40,7 @@ class RecetaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect()->route('admin.alimento.index');
     }
 
     /**
