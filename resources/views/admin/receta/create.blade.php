@@ -61,12 +61,13 @@
                         </div>
                         <div class="form-group col-md-3 ">
                             <label>Alimentos</label>
-                            <select name="alimentos" id="alimentos" class="form-control">
+                            <select name="alimento" id="alimento" class="form-control">
                                 @foreach ($alimentos as $alimento)
-                                    <option value="{{ $alimento->id }}">{{ $alimento->nombre }}</option>
+                                    <option value="{{ $alimento->nombre }}">{{ $alimento->nombre }}</option>
                                 @endforeach
                             </select>
                         </div>
+                        <input class="form-check-input" type="checkbox" value="" id="vector[]">
                         <div class="form-group col-md-3">
                             <button id="btnAdd" onclick="plus()" type="button" class="button is-success"
                                 style="height:68px;width: 70px">
@@ -83,8 +84,8 @@
             </form>
             {{-- ALT+SHIFT+TECLA DE ABAJO
                 CTRL+D=Selecciona palabras repetidas --}}
-            <div id="divElements">
 
+            <div id="divElements">
             </div>
         </div>
     </div>
@@ -97,6 +98,8 @@
 @section('js')
     <script src="https://kit.fontawesome.com/3dc732140d.js" crossorigin="anonymous"></script>
     <script type="text/javascript">
+        const $divElements = document.getElementById("divElements");
+
         function mostrar() {
             let nombre = document.getElementById("nombre").value;
             console.log(nombre);
@@ -114,7 +117,7 @@
 
         function plus() {
             const $form = document.getElementById("frmReceta");
-            const $divElements = document.getElementById("divElements");
+            // const $divElements = document.getElementById("divElements");
             const $btnSave = document.getElementById("btnSave");
             const $btnAdd = document.getElementById("btnAdd");
 
@@ -122,17 +125,17 @@
             const templateElement = (data, position) => {
                 return (`
                     <button class="delete" onclick="removeElement(event,${position})"></button>
-                    <strong>User - </strong> ${data}
+                    <strong> </strong> ${data}
                 `)
             }
-            if ($form.nombre.value != "" && $form.preparacion.value != "") {
+            if ($form.cantidad.value != "" && $form.alimento.value != "") {
                 let index = addJsonElement({
-                    nombre: $form.nombre.value,
-                    preparacion: $form.preparacion.value
+                    cantidad: $form.cantidad.value,
+                    alimento: $form.alimento.value
                 })
                 const $div = document.createElement("div")
                 $div.classList.add("notification", "is-link", "is-light", "py-2", "my-1")
-                $div.innerHTML = templateElement(`${$form.nombre.value} ${$form.preparacion.value}`)
+                $div.innerHTML = templateElement(`${$form.cantidad.value} gramos de ${$form.alimento.value}`)
                 $divElements.insertBefore($div, $divElements.firstChild)
 
             } else {
@@ -143,6 +146,7 @@
         function save() {
             parameters = parameters.filter(e1 => e1 != null)
             const $jsonDiv = document.getElementById("jsonDiv")
+            const $divVector=document.getElementById("vector")
             $jsonDiv.innerHTML = `JSON: ${JSON.stringify(parameters)}`
             $divElements.innerHTML = ""
             parameters = []

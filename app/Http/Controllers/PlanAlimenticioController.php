@@ -1,15 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\RecetaRequest;
-use App\Models\Alimento;
-use App\Models\AlimentoRecetas;
-use App\Models\Receta;
+use App\Models\Paciente;
 use Illuminate\Http\Request;
 
-class RecetaController extends Controller
+class PlanAlimenticioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +14,7 @@ class RecetaController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -28,9 +24,7 @@ class RecetaController extends Controller
      */
     public function create()
     {
-        $alimentos=Alimento::all();
-        return view('admin.receta.create',compact('alimentos'));
-
+        //
     }
 
     /**
@@ -41,9 +35,7 @@ class RecetaController extends Controller
      */
     public function store(Request $request)
     {
-
-
-        return redirect()->route('admin.alimento.index');
+        //
     }
 
     /**
@@ -63,9 +55,9 @@ class RecetaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($paciente)
     {
-        //
+
     }
 
     /**

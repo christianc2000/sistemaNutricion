@@ -70,7 +70,7 @@ class UserController extends Controller
         // $lastActivity->save();
 
         return redirect()->route('users.index')->with('info', 'Se creó un nuevo usuario'); //redirige a la vista index de la carpeta cargo
-    
+
     }
 
     /**
@@ -141,7 +141,7 @@ class UserController extends Controller
         // $lastActivity = Activity::all()->last();
         // $lastActivity->subject_id = User::all()->last()->id;
         // $lastActivity->save();
-        
+
         $user->delete();
 
 

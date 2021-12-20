@@ -11,14 +11,14 @@
 
 <table id="pacientes" class="table table-striped table-bordered shadow-lg mt-3" style="width:100%">
     <thead class="bg-dark text-white">
-        
+
        <tr>
         <th scope="col">CI</th>
           <th scope="col">NOMBRE</th>
           <th scope="col">APELLIDOS</th>
           <th scope="col">CELULAR</th>
           <th scope="col">ACCIONES</th>
- 
+
        </tr>
     </thead>
     <TBODY>
@@ -31,10 +31,11 @@
                 <td>{{$personas->where('id',$paciente->id)->first()->celular}}</td>
 
                 <td>
-     
-         
+
+
                     <form action="{{route('paciente.destroy',compact('paciente'))}}" method="POST">
-                        <a href="{{route('paciente.edit',compact('paciente'))}}" class="btn btn-primary">Editar</a>                        
+                        <a href="{{route('paciente.edit',compact('paciente'))}}" class="btn btn-primary">Editar</a>
+                        <a href="{{route('admin.planAlimenticio.edit',compact('paciente'))}}"></a>
                         @csrf  <!--metodo para añadir token a un formulario-->
                         @method('delete')
                         <button type="submit" class="btn btn-danger">Eliminar</button>
@@ -42,7 +43,7 @@
                 </td>
             </tr>
 
-            
+
         @endforeach
     </TBODY>
 </table>
