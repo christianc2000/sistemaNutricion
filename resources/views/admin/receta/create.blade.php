@@ -67,13 +67,15 @@
                                 @endforeach
                             </select>
                         </div>
-                        <input class="form-check-input" type="checkbox" value="" id="vector[]">
+                        <div id="intro" style="text-align:center;">
+                            <input type="hidden" :value="mypropstringify" />
+                        </div>
                         <div class="form-group col-md-3">
                             <button id="btnAdd" onclick="plus()" type="button" class="button is-success"
                                 style="height:68px;width: 70px">
                                 <i class="fas fa-plus"></i>
                             </button>
-                            <button id="btnSave" onclick="save()" type="submit" class="btn btn-primary"
+                            <button id="btnSave" onclick="save()" type="button" class="btn btn-primary"
                                 style="height:68px; width: 90px">Guardar</button>
                             <a href="{{ route('admin.alimento.index') }}" class="btn btn-danger">
                                 <i class="fas fa-long-arrow-alt-left"></i>
@@ -144,12 +146,30 @@
         }
 
         function save() {
-            parameters = parameters.filter(e1 => e1 != null)
+           /* parameters = parameters.filter(e1 => e1 != null)
             const $jsonDiv = document.getElementById("jsonDiv")
-            const $divVector=document.getElementById("vector")
+            const $divVector = document.getElementById("vector")
             $jsonDiv.innerHTML = `JSON: ${JSON.stringify(parameters)}`
             $divElements.innerHTML = ""
-            parameters = []
+            parameters = []*/
+            var vue_det = new Vue({
+                el: '#intro',
+                data: {
+                    myprop: [{
+                            "hola": "chao"
+                        },
+                        {
+                            "pan": "queso"
+                        }
+                    ]
+                },
+                computed: {
+                    mypropstringify() {
+                        console.log(JSON.stringify(this.myprop))
+                        return JSON.stringify(this.myprop)
+                    }
+                }
+            });
         }
     </script>
 @stop

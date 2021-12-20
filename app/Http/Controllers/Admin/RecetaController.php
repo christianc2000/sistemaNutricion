@@ -43,7 +43,7 @@ class RecetaController extends Controller
     {
 
 
-        return redirect()->route('admin.alimento.index');
+         return redirect()->route('admin.alimento.index');
     }
 
     /**
