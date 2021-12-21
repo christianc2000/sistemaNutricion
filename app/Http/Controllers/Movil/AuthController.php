@@ -27,7 +27,7 @@ try {
 return response()->json(compact('token'));
 }
 
-public function getAuthenticatedUser()
+public function getAuthenticatedUser(Request $request)
 {
 try {
     if (!$user = JWTAuth::parseToken()->authenticate()) {
@@ -57,8 +57,14 @@ public  function  logout(Request  $request) {
     } catch (JWTException  $exception) {
         return  response()->json([
             'status' => 'unknown_error',
+<<<<<<< HEAD
             'message' => 'Al usuario no se le pudo cerrar la sesión.'
         ], 500);
+=======
+	    'token'=>$request->token,
+            'message' => 'Al usuario no se le pudo cerrar la sesión.'
+        ]);
+>>>>>>> cfb2efbd1aea16689dfb5c49191d52144fb2c975
     }
 }
 

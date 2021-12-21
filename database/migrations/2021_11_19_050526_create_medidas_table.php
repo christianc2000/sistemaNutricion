@@ -18,6 +18,8 @@ class CreateMedidasTable extends Migration
             $table->string('nombre',30);
             $table->foreignId('tipo_medida_id')->references('id')->on('tipo_medidas')
             ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('u_medida')->references('id')->on('unidad_medidas')
+            ->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

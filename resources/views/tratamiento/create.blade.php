@@ -38,14 +38,8 @@
             <input type="number" class="form-control" id="celular" name="celular" placeholder="Numero de celular"
                 required>
         </div>
-        <div class="form-group">
-        <select id="nutricionista_id" name="nutricionista_id" class="form-select form-select-sm" aria-label=".form-select-sm example">
-            @foreach ($nutricionistas as $nutricionista)
-              <option value="{{$nutricionista->id}}">{{$personas->where('id',$nutricionista->id)->first()->nombres}}</option>
-            @endforeach
-            
-        </select>
-    </div>
+
+
   <a href="{{route('paciente.index')}}" class="btn btn-danger mb-4" >Cancelar</a>
   <button class="btn btn-primary mb-4" type="submit" >Guardar</button>
 @csrf

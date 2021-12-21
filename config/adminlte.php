@@ -281,6 +281,16 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
+            'text' => 'tipo de medida',
+            'url'  => 'tipoMedida',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'medida',
+            'url'  => 'medida',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
             'text'    => 'CU 26-33-36',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
@@ -303,7 +313,7 @@ return [
             ],
 
         ],
-
+        
         ['header' => 'labels'],
         ['header' => 'FUNCIONALIDADES'],
         [
