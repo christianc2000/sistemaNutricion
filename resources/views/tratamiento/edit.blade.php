@@ -53,21 +53,8 @@
     <label for="celular">Celular </label>
     <input type="number"  class="form-control" id="celular" name = "celular" placeholder="Numero de celular" required value="{{$personas->where('id',$paciente->id)->first()->celular}}">
 </div>
-<div class="form-group">
-    <select id="nutricionista_id" name="nutricionista_id" class="form-select form-select-sm" aria-label=".form-select-sm example">
-        @foreach ($nutricionistas as $nutricionista)
 
-           @if ($paciente->nutricionista_id == $nutricionista->id)
-           <option value="{{$nutricionista->id}}" selected>{{$personas->where('id',$nutricionista->id)->first()->nombres}}</option>
-           @else
-           <option value="{{$nutricionista->id}}">{{$personas->where('id',$nutricionista->id)->first()->nombres}}</option>
-           @endif 
 
-         
-        @endforeach
-        
-    </select>
-</div>
   <a href="{{route('paciente.index')}}" class="btn btn-danger mb-4" >Cancelar</a>
   <button class="btn btn-primary mb-4" type="submit" >Guardar</button>
 @csrf

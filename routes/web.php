@@ -8,6 +8,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UnidadMedidaController;
 use App\Http\Controllers\UserController;
 use Spatie\Permission\Contracts\Role;
+use App\Http\Controllers\TratamientoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::group(['middleware'=>'auth'], function(){//si no esta logueado me manda a
     Route::resource('users', UserController::class);
     Route::resource('nutricionistas', NutricionistaController::class);
     Route::resource('roles', RoleController::class);
+    Route::resource('tratamiento', TratamientoController::class);
 
 
 });
