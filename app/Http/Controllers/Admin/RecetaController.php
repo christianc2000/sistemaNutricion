@@ -7,6 +7,7 @@ use App\Http\Requests\RecetaRequest;
 use App\Models\Alimento;
 use App\Models\AlimentoRecetas;
 use App\Models\Receta;
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 use Illuminate\Http\Request;
 
 class RecetaController extends Controller
@@ -39,11 +40,27 @@ class RecetaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RecetaRequest $request)
     {
 
+        //return $request;
+      //$array = json_encode($request->vector,JSON_UNESCAPED_UNICODE);
+      $array=json_decode($request->vector[0]);
+      Receta::create([
+          'nombre'=>$request->nombre,
+          'preparacion'=>$request->preparacion,
+          'peso'=>$request->peso
+      ]);
 
-        return redirect()->route('admin.alimento.index');
+      foreach($array as $a){
+           $AlimentoId=Alimento::all()->where('nombre','=',$a->alimento)->first()->id;
+           $RecetaId=Receta::all()->last()->id;
+           AlimentoRecetas::create(['peso'=>$a->cantidad,'alimento_id'=>$AlimentoId,'receta_id'=>$RecetaId]);
+      }
+        //return Alimento::all()->last();
+
+         return redirect()->route('admin.alimento.index');
+
     }
 
     /**
@@ -54,7 +71,9 @@ class RecetaController extends Controller
      */
     public function show($id)
     {
-        //
+        $receta=Receta::all()->find($id);
+
+        return view('admin.receta.show',compact('receta'));
     }
 
     /**
@@ -88,6 +107,9 @@ class RecetaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $receta=Receta::all()->find($id);
+        $receta->delete();
+
+         return redirect()->route('admin.alimento.index');
     }
 }

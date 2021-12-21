@@ -18,7 +18,7 @@ class CreateRecetaNutrientesTable extends Migration
             $table->decimal('cantidad',8,2);
             $table->unsignedBigInteger('receta_id');
             $table->unsignedBigInteger('nutriente_id');
-            $table->foreign('receta_id')->references('id')->on('recetas');
+            $table->foreign('receta_id')->references('id')->on('recetas')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('nutriente_id')->references('id')->on('nutrientes');
             $table->timestamps();
         });

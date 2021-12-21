@@ -20,8 +20,8 @@ class CreateAlimentoRecetasTable extends Migration
             $table->unsignedBigInteger('alimento_id');
             $table->unsignedBigInteger('receta_id');
 
-            $table->foreign('alimento_id')->references('id')->on('alimentos');
-            $table->foreign('receta_id')->references('id')->on('recetas');
+            $table->foreign('alimento_id')->references('id')->on('alimentos')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('receta_id')->references('id')->on('recetas')->onDelete('cascade');
             $table->timestamps();
         });
     }

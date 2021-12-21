@@ -19,7 +19,7 @@ class CreateRecetasTable extends Migration
             $table->text('preparacion');
             $table->string('foto')->nullable();
             $table->unsignedInteger('peso');
-            $table->unsignedInteger('porcion');
+            $table->unsignedInteger('porcion')->nullable();
             $table->timestamps();
         });
     }
