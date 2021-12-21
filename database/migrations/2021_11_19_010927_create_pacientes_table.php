@@ -19,7 +19,7 @@ class CreatePacientesTable extends Migration
             $table->foreign('id')->references('id')->on('personas');
             $table->unsignedBigInteger('nutricionista_id');
             $table->foreign('nutricionista_id')->references('id')->on('nutricionistas');
-
+            
             $table->timestamps();
         });
     }

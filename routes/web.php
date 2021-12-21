@@ -11,6 +11,7 @@ use App\Http\Controllers\Tipo_medidaController;
 use App\Http\Controllers\UnidadMedidaController;
 use App\Http\Controllers\UserController;
 use Spatie\Permission\Contracts\Role;
+use App\Http\Controllers\TratamientoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::group(['middleware'=>'auth'], function(){//si no esta logueado me manda a
     Route::resource('tipoMedida', Tipo_medidaController::class);
     Route::resource('medida', MedidaController::class);
     Route::resource('control', ControlController::class);
+    Route::resource('tratamiento', TratamientoController::class);
 
 
 });
