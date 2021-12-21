@@ -18,7 +18,7 @@ class TratamientoSeeder extends Seeder
             [
                 'objetivo' => 'Bajar de peso',
                 'fechaInicio' => '10-10-2021',
-                'fechaFin' => '01-22-2022',
+                'fechaFin' => '22-01-2022',
                 'costo' => '2000',
                 'completo' => 'false',
                 'paciente_id' => 2,
@@ -26,7 +26,7 @@ class TratamientoSeeder extends Seeder
             [
                 'objetivo' => 'Aumentar masa muscular',
                 'fechaInicio' => '09-08-2021',
-                'fechaFin' => '12-22-2021',
+                'fechaFin' => '22-12-2021',
                 'costo' => '2200',
                 'completo' => 'false',
                 'paciente_id' => 3,

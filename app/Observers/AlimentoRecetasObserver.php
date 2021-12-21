@@ -34,7 +34,6 @@ class AlimentoRecetasObserver
             }
         }
     }
-
     /**
      * Handle the AlimentoRecetas "updated" event.
      *
@@ -45,7 +44,6 @@ class AlimentoRecetasObserver
     {
         //
     }
-
     /**
      * Handle the AlimentoRecetas "deleted" event.
      *
@@ -64,7 +62,6 @@ class AlimentoRecetasObserver
                 $rn->save();
         }
     }
-
     /**
      * Handle the AlimentoRecetas "restored" event.
      *
@@ -75,7 +72,6 @@ class AlimentoRecetasObserver
     {
         //
     }
-
     /**
      * Handle the AlimentoRecetas "force deleted" event.
      *

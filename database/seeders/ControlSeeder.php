@@ -16,7 +16,7 @@ class ControlSeeder extends Seeder
     {
         $controls = ([
             [
-                'fecha' => '09-22-2021',
+                'fecha' => '22-09-2021',
                 'tipo_control' => 'true',
                 'tratamiento_id' => 1,
             ],
@@ -26,12 +26,12 @@ class ControlSeeder extends Seeder
                 'tratamiento_id' => 1,
             ],
             [
-                'fecha' => '10-13-2021',
+                'fecha' => '13-10-2021',
                 'tipo_control' => 'true',
                 'tratamiento_id' => 2,
             ],
             [
-                'fecha' => '10-23-2021',
+                'fecha' => '23-10-2021',
                 'tipo_control' => 'true',
                 'tratamiento_id' => 2,
             ],

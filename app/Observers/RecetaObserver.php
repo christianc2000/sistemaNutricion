@@ -39,9 +39,9 @@ class RecetaObserver
      * @param  \App\Models\Receta  $receta
      * @return void
      */
-    public function deleted(Receta $receta)
+    public function deleting(Receta $receta)
     {
-        //
+
     }
 
     /**

@@ -24,7 +24,20 @@ class RecetaRequest extends FormRequest
     public function rules()
     {
         return [
-            'vector'=>"required"
+            'vector'=>'required',
+            'nombre'=>'required',
+            'preparacion'=>'required',
+            'peso'=>'required',
+            'porcion'=>'required'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'nombre.required'=>'Debe llenar el campo nombre ',
+            'preparacion.required'=>'Debe llenar el campo preparación',
+            'peso.required'=>'Debe llenar el campo peso',
+            'porcion.required'=>'Debe llenar el campo porcion',
         ];
     }
 }
